@@ -16,7 +16,7 @@ local Jump, Target, PreJumpState, Strategy
 --- @param opts JumpOpts -- Options for this jump.
 --- 
 local function jump(opts)
-  local j = Jump:new(opts)
+  local j = Jump:new(opts or {})
 
   local on_input_change = function(text)
     Strategy.UpperCaseLabel(j, text)
@@ -111,8 +111,6 @@ local default_labels = {
 --- @return Jump
 ---
 function Jump:new(opts)
-  opts = opts or {}
-
   return setmetatable({
     labels = opts.labels or default_labels,
     direction = opts.direction or 'both',
