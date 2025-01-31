@@ -37,7 +37,7 @@ local function jump(opts)
 
   local ok, _ = input({ prompt = ">> ", on_change = on_input_change })
 
-  if ok and not j.complete then
+  if ok and not j.complete and j.targets[1] then
     j:execute(j.targets[1].label) -- jump to the first label
   end
 
